@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mimo-audio"
+version = "0.1.0"
+description = "MiMo-Audio inference library"
+readme = "PACKAGING.md"
+requires-python = ">=3.12,<3.13"
+license = "Apache-2.0"
+dependencies = [
+  "torch==2.6.0",
+  "torchaudio==2.6.0",
+  "transformers==4.49.0",
+  "accelerate==1.9.0",
+  "einops==0.8.1",
+  "numpy==2.2.6",
+  "soundfile==0.13.1",
+  "huggingface-hub>=0.26,<1",
+  "flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1%2Bcu12torch2.6cxx11abiFALSE-cp312-cp312-linux_x86_64.whl ; sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src", "src.mimo_audio*", "src.mimo_audio_tokenizer*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"src.mimo_audio" = ["assets/prompt_speech_en_m.wav"]
